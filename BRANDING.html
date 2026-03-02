@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frostline Studio – Product Branding &amp; Feature Overview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #050A14;
+            color: #E2E8F0;
+            line-height: 1.7;
+        }
+
+        /* ── Hero ────────────────────────────────────────── */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background:
+                radial-gradient(ellipse at 30% 80%, rgba(96, 165, 250, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(59, 130, 246, 0.04) 0%, transparent 60%),
+                linear-gradient(180deg, #050A14, #0B1929);
+        }
+        .hero-logo { width: 90px; height: 90px; margin-bottom: 24px; }
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #F1F5F9;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+        .hero-tagline {
+            font-size: 14px;
+            color: #60A5FA;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .hero-desc {
+            font-size: 15px;
+            color: #94A3B8;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ── Container ───────────────────────────────────── */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── Section ─────────────────────────────────────── */
+        .section {
+            padding: 56px 0;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.06);
+        }
+        .section:last-child { border-bottom: none; }
+        .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #60A5FA;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #F1F5F9;
+            margin-bottom: 12px;
+        }
+        .section-desc {
+            font-size: 14px;
+            color: #94A3B8;
+            max-width: 600px;
+            margin-bottom: 32px;
+        }
+
+        /* ── Stats Row ───────────────────────────────────── */
+        .stats-row {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .stat {
+            text-align: center;
+            min-width: 100px;
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: #60A5FA;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: #64748B;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* ── Feature Grid ────────────────────────────────── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 640px) { .feature-grid { grid-template-columns: 1fr; } }
+        .feature-card {
+            background: rgba(96, 165, 250, 0.03);
+            border: 1px solid rgba(96, 165, 250, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.2s ease;
+        }
+        .feature-card:hover { border-color: rgba(96, 165, 250, 0.2); }
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .feature-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #E2E8F0;
+            margin-bottom: 6px;
+        }
+        .feature-desc {
+            font-size: 13px;
+            color: #64748B;
+            line-height: 1.6;
+        }
+
+        /* ── Module List ─────────────────────────────────── */
+        .module-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .module-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+        .module-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(147, 197, 253, 0.06));
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .module-body { flex: 1; }
+        .module-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #E2E8F0;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .module-tag {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 2px 7px;
+            border-radius: 4px;
+        }
+        .tag-nui { background: rgba(96, 165, 250, 0.1); color: #60A5FA; }
+        .tag-core { background: rgba(52, 211, 153, 0.1); color: #34D399; }
+        .tag-security { background: rgba(248, 113, 113, 0.1); color: #F87171; }
+        .tag-module { background: rgba(251, 191, 36, 0.1); color: #FBBF24; }
+        .module-desc {
+            font-size: 13px;
+            color: #64748B;
+            line-height: 1.5;
+        }
+        .module-commands {
+            margin-top: 8px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .cmd-badge {
+            font-family: 'Consolas', monospace;
+            font-size: 11px;
+            color: #60A5FA;
+            background: rgba(96, 165, 250, 0.08);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .key-badge {
+            font-family: 'Consolas', monospace;
+            font-size: 10px;
+            color: #E2E8F0;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ── Tech Specs ──────────────────────────────────── */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+        @media (max-width: 640px) { .specs-grid { grid-template-columns: 1fr; } }
+        .spec-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .spec-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .spec-value {
+            font-size: 14px;
+            color: #E2E8F0;
+            font-weight: 600;
+        }
+        .spec-note {
+            font-size: 11px;
+            color: #64748B;
+            margin-top: 4px;
+        }
+
+        /* ── Color Palette ───────────────────────────────── */
+        .palette-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .swatch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 12px 16px;
+            flex: 1;
+            min-width: 180px;
+        }
+        .swatch-color {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .swatch-info {}
+        .swatch-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: #E2E8F0;
+        }
+        .swatch-hex {
+            font-size: 11px;
+            color: #64748B;
+            font-family: 'Consolas', monospace;
+        }
+
+        /* ── Typography Sample ───────────────────────────── */
+        .type-sample {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 16px;
+        }
+        .type-label {
+            font-size: 10px;
+            color: #475569;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        /* ── File Tree ───────────────────────────────────── */
+        .file-tree {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 24px 28px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 12px;
+            color: #94A3B8;
+            line-height: 1.8;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .file-tree .dir { color: #60A5FA; }
+        .file-tree .file { color: #94A3B8; }
+        .file-tree .comment { color: #475569; }
+
+        /* ── Footer ──────────────────────────────────────── */
+        .page-footer {
+            text-align: center;
+            padding: 48px 20px;
+            border-top: 1px solid rgba(96, 165, 250, 0.06);
+        }
+        .footer-brand {
+            font-size: 14px;
+            font-weight: 700;
+            color: #E2E8F0;
+            letter-spacing: 2px;
+        }
+        .footer-links {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #64748B;
+        }
+        .footer-links a {
+            color: #60A5FA;
+            text-decoration: none;
+        }
+        .footer-links a:hover { text-decoration: underline; }
+        .footer-copy {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #334155;
+        }
+
+        /* ── Divider ─────────────────────────────────────── */
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #3B82F6, transparent);
+            margin: 20px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════════ HERO -->
+    <div class="hero">
+        <svg class="hero-logo" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1E3A5F"/><stop offset="100%" stop-color="#0F2440"/></linearGradient><linearGradient id="fg" x1="30" y1="20" x2="90" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#93C5FD"/><stop offset="50%" stop-color="#60A5FA"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient></defs><circle cx="60" cy="60" r="56" fill="url(#bg)" stroke="url(#fg)" stroke-width="1.5" opacity="0.9"/><g transform="translate(60,60)"><line x1="0" y1="-28" x2="0" y2="28" stroke="url(#fg)" stroke-width="3" stroke-linecap="round"/><line x1="-24.25" y1="-14" x2="24.25" y2="14" stroke="url(#fg)" stroke-width="3" stroke-linecap="round"/><line x1="-24.25" y1="14" x2="24.25" y2="-14" stroke="url(#fg)" stroke-width="3" stroke-linecap="round"/><line x1="0" y1="-18" x2="-7" y2="-24" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="-18" x2="7" y2="-24" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="18" x2="-7" y2="24" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="18" x2="7" y2="24" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="15.6" y1="-9" x2="19.5" y2="-17" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="15.6" y1="-9" x2="22.5" y2="-6" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="-15.6" y1="9" x2="-19.5" y2="17" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="-15.6" y1="9" x2="-22.5" y2="6" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="15.6" y1="9" x2="22.5" y2="6" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="15.6" y1="9" x2="19.5" y2="17" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="-15.6" y1="-9" x2="-22.5" y2="-6" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><line x1="-15.6" y1="-9" x2="-19.5" y2="-17" stroke="url(#fg)" stroke-width="2" stroke-linecap="round"/><circle cx="0" cy="0" r="4" fill="url(#fg)" opacity="0.9"/></g></svg>
+        <h1>FROSTLINE STUDIO</h1>
+        <div class="hero-tagline">Premium FiveM Showcase Framework</div>
+        <p class="hero-desc">A complete, modular server framework for showcasing FiveM assets. Cinematic loading screen, NUI-driven menus, admin tools, vehicle browser, and full branding system — all in one package.</p>
+        <div class="stats-row">
+            <div class="stat"><div class="stat-value">10</div><div class="stat-label">Modules</div></div>
+            <div class="stat"><div class="stat-value">0</div><div class="stat-label">Dependencies</div></div>
+            <div class="stat"><div class="stat-value">5</div><div class="stat-label">NUI Panels</div></div>
+            <div class="stat"><div class="stat-value">100%</div><div class="stat-label">Config-Driven</div></div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ═══════════════════════════════════════════════ FEATURES -->
+        <div class="section">
+            <div class="section-label">Why Frostline</div>
+            <div class="section-title">Built for Showcase Servers</div>
+            <div class="section-desc">Everything a studio needs to present MLOs, vehicles, and scripts to clients — nothing more, nothing less.</div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧊</div>
+                    <div class="feature-name">Glass Frost UI</div>
+                    <div class="feature-desc">Consistent frost/glass aesthetic across all panels — backdrop blur, gradient borders, and smooth animations.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-name">Zero Framework</div>
+                    <div class="feature-desc">Fully standalone. No ESX, QBCore, or any framework dependency. Drop in and run.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <div class="feature-name">Config-Driven</div>
+                    <div class="feature-desc">Every feature is controlled via Lua config files. Add locations, vehicles, and branding without touching code.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-name">Production Security</div>
+                    <div class="feature-desc">Anti-spam, teleport detection, explosion blocking, license whitelist, and Discord webhook logging.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <div class="feature-name">Modular Architecture</div>
+                    <div class="feature-desc">Each module is independent — restart, disable, or replace any component without affecting the rest.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-name">Full Branding Kit</div>
+                    <div class="feature-desc">SVG logos, watermark, custom pause menu, join messages, and consistent styling across all surfaces.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ MODULES -->
+        <div class="section">
+            <div class="section-label">Included Modules</div>
+            <div class="section-title">10 Resources, One Package</div>
+            <div class="section-desc">Every module follows the same conventions: fxmanifest, config.lua, client/, server/, and html/ where applicable.</div>
+
+            <div class="module-list">
+                <div class="module-card">
+                    <div class="module-icon">⚙️</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-core <span class="module-tag tag-core">Core</span></div>
+                        <div class="module-desc">Shared utilities, permission helpers, Discord webhook system, and global configuration. Required by all other modules.</div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🎬</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-loading <span class="module-tag tag-nui">NUI</span></div>
+                        <div class="module-desc">Cinematic loading screen with animated frost particles, progress bar, music toggle, and server info display.</div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">📍</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-showcase <span class="module-tag tag-nui">NUI</span></div>
+                        <div class="module-desc">Category-driven teleport menu with fade transitions, routing bucket isolation, and admin runtime location management.</div>
+                        <div class="module-commands">
+                            <span class="cmd-badge">/showcase</span>
+                            <span class="key-badge">F5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🚗</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-vehicles <span class="module-tag tag-nui">NUI</span></div>
+                        <div class="module-desc">Vehicle browser with glob-pattern model matching, 5 categories, categorized spawning, and automatic cleanup.</div>
+                        <div class="module-commands">
+                            <span class="cmd-badge">/cars</span>
+                            <span class="cmd-badge">/dv</span>
+                            <span class="key-badge">F6</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🛡️</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-admin <span class="module-tag tag-nui">NUI</span></div>
+                        <div class="module-desc">Full admin panel — player list, kick/ban with durations, persistent ban storage, announcements, teleport-to, freeze, and quick actions.</div>
+                        <div class="module-commands">
+                            <span class="cmd-badge">/admin</span>
+                            <span class="key-badge">F7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">ℹ️</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-aboutus <span class="module-tag tag-nui">NUI</span></div>
+                        <div class="module-desc">Studio information panel with services grid, social links, and branding. Configurable via config.lua.</div>
+                        <div class="module-commands">
+                            <span class="cmd-badge">/about</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">📜</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-rules <span class="module-tag tag-module">Module</span></div>
+                        <div class="module-desc">In-game usage policy display with chat-based color-coded output. Includes standalone web pages for rules and scripts listing.</div>
+                        <div class="module-commands">
+                            <span class="cmd-badge">/rules</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🏷️</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-branding <span class="module-tag tag-module">Module</span></div>
+                        <div class="module-desc">On-screen watermark, custom pause menu header, join messages, and periodic Discord reminders.</div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🔒</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-security <span class="module-tag tag-security">Security</span></div>
+                        <div class="module-desc">Anti-spam event limiter, teleport abuse detection, explosion blocking, and weapon restriction with Discord logging.</div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">✅</div>
+                    <div class="module-body">
+                        <div class="module-name">frostline-whitelist <span class="module-tag tag-security">Security</span></div>
+                        <div class="module-desc">License-based access control with configurable whitelist and custom denial messages.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ TECH SPECS -->
+        <div class="section">
+            <div class="section-label">Technical</div>
+            <div class="section-title">Specifications</div>
+            <div class="section-desc">Built for performance, reliability, and easy customization.</div>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="spec-title">Platform</div>
+                    <div class="spec-value">FiveM</div>
+                    <div class="spec-note">GTA5, Cerulean manifest</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">Framework</div>
+                    <div class="spec-value">Standalone</div>
+                    <div class="spec-note">No ESX / QBCore required</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">Language</div>
+                    <div class="spec-value">Lua + HTML/CSS/JS</div>
+                    <div class="spec-note">NUI panels, vanilla JS</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">OneSync</div>
+                    <div class="spec-value">Supported</div>
+                    <div class="spec-note">Enabled by default</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">Database</div>
+                    <div class="spec-value">None Required</div>
+                    <div class="spec-note">File-based ban storage</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">Game Build</div>
+                    <div class="spec-value">3095+</div>
+                    <div class="spec-note">Latest recommended</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ BRAND GUIDE -->
+        <div class="section">
+            <div class="section-label">Brand Identity</div>
+            <div class="section-title">Color Palette</div>
+            <div class="section-desc">Consistent frost/ice color system used across all UI surfaces.</div>
+            <div class="palette-row">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #60A5FA;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Frost Blue</div>
+                        <div class="swatch-hex">#60A5FA</div>
+                    </div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #93C5FD;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Ice Light</div>
+                        <div class="swatch-hex">#93C5FD</div>
+                    </div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #3B82F6;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Deep Blue</div>
+                        <div class="swatch-hex">#3B82F6</div>
+                    </div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #1E3A5F;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Navy</div>
+                        <div class="swatch-hex">#1E3A5F</div>
+                    </div>
+                </div>
+            </div>
+            <div class="palette-row" style="margin-top: 12px;">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #050A14;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Background</div>
+                        <div class="swatch-hex">#050A14</div>
+                    </div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #0B1929;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Panel BG</div>
+                        <div class="swatch-hex">#0B1929</div>
+                    </div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #E2E8F0;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Text Primary</div>
+                        <div class="swatch-hex">#E2E8F0</div>
+                    </div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #64748B;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Text Muted</div>
+                        <div class="swatch-hex">#64748B</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+                <div class="section-title" style="font-size: 18px;">Typography</div>
+                <div class="type-sample" style="margin-top: 16px;">
+                    <div class="type-label">Primary Font Stack</div>
+                    <div style="font-size: 20px; font-weight: 700; color: #E2E8F0; letter-spacing: 2px;">FROSTLINE STUDIO</div>
+                    <div style="font-size: 14px; color: #94A3B8; margin-top: 8px;">'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif</div>
+                </div>
+                <div class="type-sample">
+                    <div class="type-label">Monospace (Commands &amp; Codes)</div>
+                    <div style="font-size: 14px; font-family: Consolas, monospace; color: #60A5FA;">/showcase &nbsp; /cars &nbsp; /admin &nbsp; /rules &nbsp; /about &nbsp; /dv</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+                <div class="section-title" style="font-size: 18px;">Logo Assets</div>
+                <div class="section-desc">Three SVG variants included for different contexts.</div>
+                <div class="specs-grid">
+                    <div class="spec-card" style="text-align: center;">
+                        <div class="spec-title">Full Logo</div>
+                        <div class="spec-value">logo.svg</div>
+                        <div class="spec-note">120x120 · Headers, hero sections</div>
+                    </div>
+                    <div class="spec-card" style="text-align: center;">
+                        <div class="spec-title">Small Logo</div>
+                        <div class="spec-value">logo-small.svg</div>
+                        <div class="spec-note">40x40 · Panel headers, nav</div>
+                    </div>
+                    <div class="spec-card" style="text-align: center;">
+                        <div class="spec-title">Favicon</div>
+                        <div class="spec-value">favicon.svg</div>
+                        <div class="spec-note">32x32 · Browser tabs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ FILE STRUCTURE -->
+        <div class="section">
+            <div class="section-label">Package</div>
+            <div class="section-title">File Structure</div>
+            <div class="section-desc">Clean, consistent directory layout across all modules.</div>
+            <div class="file-tree"><span class="dir">flc_gamemode/</span>
+├── server.cfg
+├── start.bat
+├── start_loop.bat
+├── server_icon.png
+├── DEPLOYMENT_GUIDE.txt
+├── BRANDING.html                    <span class="comment">← this file</span>
+└── <span class="dir">resources/[frostline]/</span>
+    ├── <span class="dir">frostline-assets/</span>           <span class="comment">← shared SVG logos</span>
+    ├── <span class="dir">frostline-core/</span>
+    │   ├── fxmanifest.lua
+    │   ├── config.lua
+    │   ├── <span class="dir">client/</span>main.lua
+    │   ├── <span class="dir">server/</span>main.lua, permissions.lua, webhooks.lua
+    │   └── <span class="dir">shared/</span>utils.lua
+    ├── <span class="dir">frostline-loading/</span>
+    │   ├── fxmanifest.lua
+    │   └── <span class="dir">html/</span>index.html, style.css, app.js, *.svg
+    ├── <span class="dir">frostline-showcase/</span>
+    │   ├── fxmanifest.lua, config.lua
+    │   ├── <span class="dir">client/</span>main.lua
+    │   ├── <span class="dir">server/</span>main.lua
+    │   └── <span class="dir">html/</span>index.html, style.css, app.js, *.svg
+    ├── <span class="dir">frostline-vehicles/</span>
+    │   ├── fxmanifest.lua, config.lua
+    │   ├── <span class="dir">client/</span>main.lua
+    │   ├── <span class="dir">server/</span>main.lua
+    │   └── <span class="dir">html/</span>index.html, style.css, app.js, *.svg
+    ├── <span class="dir">frostline-admin/</span>
+    │   ├── fxmanifest.lua, config.lua
+    │   ├── <span class="dir">client/</span>main.lua
+    │   ├── <span class="dir">server/</span>main.lua, bans.json
+    │   └── <span class="dir">html/</span>index.html, style.css, app.js, *.svg
+    ├── <span class="dir">frostline-aboutus/</span>
+    │   ├── fxmanifest.lua, config.lua
+    │   ├── <span class="dir">client/</span>main.lua
+    │   ├── <span class="dir">server/</span>main.lua
+    │   └── <span class="dir">html/</span>index.html, style.css, app.js, *.svg
+    ├── <span class="dir">frostline-rules/</span>
+    │   ├── fxmanifest.lua, config.lua
+    │   ├── <span class="dir">server/</span>main.lua
+    │   ├── RULES_WEBSITE.html
+    │   ├── SCRIPTS_WEBSITE.html
+    │   └── RULES_DISCORD.md
+    ├── <span class="dir">frostline-branding/</span>
+    │   ├── fxmanifest.lua, config.lua
+    │   ├── <span class="dir">client/</span>main.lua
+    │   └── <span class="dir">server/</span>main.lua
+    ├── <span class="dir">frostline-security/</span>
+    │   ├── fxmanifest.lua, config.lua
+    │   ├── <span class="dir">client/</span>main.lua
+    │   ├── <span class="dir">server/</span>main.lua
+    │   └── HARDENING_GUIDE.txt
+    └── <span class="dir">frostline-whitelist/</span>
+        ├── fxmanifest.lua, config.lua
+        └── <span class="dir">server/</span>main.lua</div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ QUICK START -->
+        <div class="section">
+            <div class="section-label">Setup</div>
+            <div class="section-title">Quick Start Guide</div>
+            <div class="section-desc">Get running in under 5 minutes.</div>
+            <div class="module-list">
+                <div class="module-card">
+                    <div class="module-icon" style="font-weight: 800; font-size: 14px; color: #60A5FA;">1</div>
+                    <div class="module-body">
+                        <div class="module-name">Drop In</div>
+                        <div class="module-desc">Copy the <strong>resources/[frostline]</strong> folder into your FiveM server-data resources directory.</div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon" style="font-weight: 800; font-size: 14px; color: #60A5FA;">2</div>
+                    <div class="module-body">
+                        <div class="module-name">Configure</div>
+                        <div class="module-desc">Edit <strong>server.cfg</strong> — set your license key, admin identifiers, and Discord webhook URLs.</div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon" style="font-weight: 800; font-size: 14px; color: #60A5FA;">3</div>
+                    <div class="module-body">
+                        <div class="module-name">Customize</div>
+                        <div class="module-desc">Edit each module's <strong>config.lua</strong> to set locations, vehicles, branding text, and whitelist entries.</div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon" style="font-weight: 800; font-size: 14px; color: #60A5FA;">4</div>
+                    <div class="module-body">
+                        <div class="module-name">Launch</div>
+                        <div class="module-desc">Run <strong>start.bat</strong> and connect. All modules auto-load in the correct order.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ FOOTER -->
+    <div class="page-footer">
+        <div class="footer-brand">FROSTLINE STUDIO</div>
+        <div class="footer-links">
+            <a href="https://frostlinestudio.com">frostlinestudio.com</a> &nbsp;·&nbsp;
+            <a href="https://discord.gg/yourserver">Discord</a> &nbsp;·&nbsp;
+            <a href="https://store.frostlinestudio.com">Store</a>
+        </div>
+        <div class="footer-copy">&copy; 2024 Frostline Studio. All rights reserved. Unauthorized redistribution prohibited.</div>
+    </div>
+
+</body>
+</html>
